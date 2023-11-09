@@ -17,8 +17,8 @@
 1. Клонируйте репозиторий на локальную машину:
 
 ```bash
-git clone https://github.com/yourusername/rss-feed-processor.git
-cd rss-feed-processor
+git clone https://github.com/dzarlax/Zavtracast_Patreon_Feed_Devider.git
+cd Zavtracast_Patreon_Feed_Devider
 ```
 
 2. Cоздайте виртуальное окружение:
@@ -37,7 +37,7 @@ source zavtracast/bin/activate
 На Windows:
 
 ```bash
-.\venv\Scripts\activate
+.\zavtracast\Scripts\activate
 ```
 
 Утановите необходимые пакеты:
@@ -69,13 +69,15 @@ python main.py
 ```
 Это загрузит исходный RSS-фид, сгруппирует подкасты и загрузит новые фиды в ваш S3 бакет в Yandex Object Storage.
 
+# Для настройки автоматического обновления 
+
 ## На Unix-подобных системах (включая Linux и macOS):
 1. Откройте терминал.
 2. Введите ```crontab -e``` для редактирования cron-задач для текущего пользователя.
 3. Добавьте следующую строку в конец файла:
 
 ``` ruby
-0 */2 * * * /path/to/your/venv/bin/python /path/to/your/rss-feed-processor/main.py >> /path/to/your/logfile.log 2>&1
+0 */2 * * * /path/to/your/Zavtracast_Patreon_Feed_Devider/zavtracast/bin/python /path/to/your/Zavtracast_Patreon_Feed_Devider/main.py >> /path/to/your/Zavtracast_Patreon_Feed_Devider/logfile.log 2>&1
 ```
 Здесь /path/to/your/venv/bin/python — это путь к интерпретатору Python в вашем виртуальном окружении, /path/to/your/rss-feed-processor/main.py — это путь к вашему скрипту, а /path/to/your/logfile.log — это файл, куда будут записываться логи выполнения скрипта.
 4. Сохраните файл и выйдите из редактора. Cron автоматически применит эти изменения.
