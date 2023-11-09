@@ -49,7 +49,7 @@ def create_rss_feed(group_name, items):
     title = ET.SubElement(channel, "title")
     title.text = f"{group_name} Podcast Feed"
     link = ET.SubElement(channel, "link")
-    link.text = "https://dzarlax.dev"
+    link.text = load_config("web_site")
     description = ET.SubElement(channel, "description")
     description.text = f"This is an RSS feed for the {group_name} series of podcasts."
 

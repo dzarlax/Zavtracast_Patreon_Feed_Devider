@@ -55,7 +55,8 @@ pip install -r requirements.txt
   "SECRET_KEY": "ваш_secret_key",
   "BUCKET_NAME": "имя_вашего_бакета",
   "ENDPOINT_URL": "https://storage.yandexcloud.net",
-  "zavtracast_patreon_feed": "Ссылка на ваш RSS в патреоне"
+  "zavtracast_patreon_feed": "Ссылка на ваш RSS в патреоне",
+  "web_site": "ваш сайт"
 }
 ```
 
