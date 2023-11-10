@@ -7,6 +7,14 @@ from xml.dom.minidom import parseString
 from botocore.exceptions import NoCredentialsError
 from typing import Optional
 
+group_logos = {
+    'Завтракаст': 'https://s3.dzarlax.dev/zavtracast.jpg',
+    'ДТКД': 'https://s3.dzarlax.dev/zk.jpg',
+    'СДЗ': 'https://s3.dzarlax.dev/tales.jpg',
+    'Кабинет Лора': 'https://s3.dzarlax.dev/lore.jpg',
+    'Special': 'https://s3.dzarlax.dev/zk.jpg',
+    'Другое': 'https://s3.dzarlax.dev/zk.jpg'
+}
 
 # Функция для определения к какой группе относится каждый элемент фида
 
@@ -71,6 +79,14 @@ def create_rss_feed(group_name, items):
             enclosure.attrib['url'] = original_enclosure.attrib.get('url')
             enclosure.attrib['type'] = original_enclosure.attrib.get('type')
             enclosure.attrib['length'] = original_enclosure.attrib.get('length')
+        if group_name in group_logos:
+            image = ET.SubElement(channel, "image")
+            image_title = ET.SubElement(image, "title")
+            image_title.text = f"{group_name} Logo"
+            image_link = ET.SubElement(image, "link")
+            image_link.text = link.text  # Ссылка на сайт подкаста
+            image_url = ET.SubElement(image, "url")
+            image_url.text = group_logos[group_name]
 
     feed_str = ET.tostring(rss, encoding='utf-8', method='xml')
     dom = parseString(feed_str)
