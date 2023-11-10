@@ -56,7 +56,13 @@ pip install -r requirements.txt
   "BUCKET_NAME": "имя_вашего_бакета",
   "ENDPOINT_URL": "https://storage.yandexcloud.net",
   "zavtracast_patreon_feed": "Ссылка на ваш RSS в патреоне",
-  "web_site": "ваш сайт"
+  "web_site": "ваш сайт",
+  "Завтракаст": "ссылка на лого",
+  "ДТКД": "ссылка на лого",
+  "СДЗ": "ссылка на лого",
+  "Кабинет Лора": "ссылка на лого",
+  "Special": "ссылка на лого",
+  "Другое": "ссылка на лого"
 }
 ```
 

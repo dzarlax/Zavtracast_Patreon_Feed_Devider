@@ -9,14 +9,6 @@ from typing import Optional
 
 ET.register_namespace('itunes', 'http://www.itunes.com/dtds/podcast-1.0.dtd')
 
-group_logos = {
-    'Завтракаст': 'https://s3.dzarlax.dev/zavtracast.jpg',
-    'ДТКД': 'https://s3.dzarlax.dev/zk.jpg',
-    'СДЗ': 'https://s3.dzarlax.dev/tales.jpg',
-    'Кабинет Лора': 'https://s3.dzarlax.dev/lore.jpg',
-    'Special': 'https://s3.dzarlax.dev/zk.jpg',
-    'Другое': 'https://s3.dzarlax.dev/zk.jpg'
-}
 
 # Функция для определения к какой группе относится каждый элемент фида
 
@@ -36,6 +28,14 @@ def load_config(key: Optional[str] = None):
     else:
         return config  # Возвращаем весь конфигурационный словарь
 
+group_logos = {
+    'Завтракаст': load_config('Завтракаст') ,
+    'ДТКД': load_config('ДТКД'),
+    'СДЗ': load_config('СДЗ'),
+    'Кабинет Лора': load_config('Кабинет Лора'),
+    'Special': load_config('Special'),
+    'Другое': load_config('Другое')
+}
 
 def determine_group(title):
     if 'Zavtracast' in title or 'Завтракаст' in title:
