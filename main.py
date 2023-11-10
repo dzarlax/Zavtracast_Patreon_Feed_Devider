@@ -7,6 +7,8 @@ from xml.dom.minidom import parseString
 from botocore.exceptions import NoCredentialsError
 from typing import Optional
 
+ET.register_namespace('itunes', 'http://www.itunes.com/dtds/podcast-1.0.dtd')
+
 group_logos = {
     'Завтракаст': 'https://s3.dzarlax.dev/zavtracast.jpg',
     'ДТКД': 'https://s3.dzarlax.dev/zk.jpg',
@@ -87,6 +89,11 @@ def create_rss_feed(group_name, items):
             image_link.text = link.text  # Ссылка на сайт подкаста
             image_url = ET.SubElement(image, "url")
             image_url.text = group_logos[group_name]
+            # Добавление обложки выпуска, если она доступна
+        original_image = item.find('itunes:image')
+        if original_image is not None:
+            image = ET.SubElement(item_element, 'itunes:image')
+            image.attrib['href'] = original_image.attrib.get('href')
 
     feed_str = ET.tostring(rss, encoding='utf-8', method='xml')
     dom = parseString(feed_str)
