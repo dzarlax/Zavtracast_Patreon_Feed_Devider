@@ -65,6 +65,12 @@ def create_rss_feed(group_name, items):
         item_pubDate = ET.SubElement(item_element, "pubDate")
         item_pubDate.text = item.find('pubDate').text if item.find(
             'pubDate') is not None else "No publication date available"
+        original_enclosure = item.find('enclosure')
+        if original_enclosure is not None:
+            enclosure = ET.SubElement(item_element, 'enclosure')
+            enclosure.attrib['url'] = original_enclosure.attrib.get('url')
+            enclosure.attrib['type'] = original_enclosure.attrib.get('type')
+            enclosure.attrib['length'] = original_enclosure.attrib.get('length')
 
     feed_str = ET.tostring(rss, encoding='utf-8', method='xml')
     dom = parseString(feed_str)
